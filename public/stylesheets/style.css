@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/*
+font-family: 'Oswald', sans-serif;
+font-family: 'Poppins', sans-serif;
+*/
+* {
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background-color:lightgray;
+}
+
+.navbar{
+  background-color: white;
+}
+.offcanvas {
+  width: 200px; /* Ancho personalizado */
+  max-width: 40%;
+  max-height: 40%; /* Ancho máximo personalizado */
+}
+
+.contenedorBusqueda{
+  background-color:white;
+}
+
+.imagenPortada{
+  background-color:white;
+}
+
+.busqueda::placeholder {
+  font-size: 85%;
+  
+}
+.textOfertas{
+  background-color: white;
+}
+
+.contenedorComprar{
+  background-color: white;
+}
