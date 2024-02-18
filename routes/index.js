@@ -6,10 +6,6 @@ router.get('/', function (req,res,next) {
   res.render('index', { title: 'Repara-Delivery' });
 });
 
-/* GET seecion (productos). */
-router.get('/productos', function(req, res, next) {
-  res.render('productos', { title: 'Productos' });
-});
 
 /* GET seecion (comprar). */
 router.get('/comprar', function(req, res, next) {

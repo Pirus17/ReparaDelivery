@@ -5,8 +5,8 @@ module.exports = {
 
     index: function (req, res) {
         producto.obtener(conexion, function (err, datos) {
-            console.log(datos);
-            res.render('index', { title: 'Productos' });
+            //console.log(datos);
+            res.render('productos/index', { title: 'Productos', productos:datos});
         })
     }
 
