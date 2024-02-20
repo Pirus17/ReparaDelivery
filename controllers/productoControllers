@@ -5,10 +5,19 @@ module.exports = {
 
     index: function (req, res) {
         producto.obtener(conexion, function (err, datos) {
-            //console.log(datos);
-            res.render('productos/index', { title: 'Productos', productos:datos});
+            res.render('productos/index', { title: 'Productos', productos: datos });
         })
-    }
+    },
 
+    filtrar: function (req, res) {
+            console.log(req.body);
+            producto.porMarca(conexion, req.body, function (err, datos) {
+            console.log(datos);
+            res.render('productos/index', { title: 'Productos',productos: datos});
+        })
+
+    }
 }
+
+
 

@@ -1,24 +1,100 @@
-<%- include ('../layouts/header') %>
-<H1 class="text-center textOfertas">PRODUCTOS</H1>
-<BR>    
-<%= productos[1].modelo %>
-<!--contenedores de ofertas-->
-<div class="container-fluid">
-    
-    <% for (let i = 0; i < 9; i++) { %>
-        <% if (i % 3 === 0) { %>
-            <div class="row">
-        <% } %>
-        <a href="/comprar" class="container btn btn-light col-md-3 mb-4">
-            <img src="/images/diseños1.jpg" class="img-fluid" alt="">
-            <h1> <%= productos[i].Marca %> </h1>
-            <h6><%= productos[i].Modelo %> </h6>
-        </a>
-        <% if ((i + 1) % 3 === 0 || i === 10) { %>
+<%-include ('../layouts/header') %>
+    <H1 class="text-center textOfertas">PRODUCTOS</H1>
+    <BR>
+
+    <!--contenedores de Productos-->
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-2">
+            <div class="row  align-items-start justify-content-end">
+                <div class="container fluid bg-white">                   
+                    <h3>Filtrar</h3>
+                    <hr>
+                    <h5>Marcas</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="alcatel">
+                                <button type="submit" class="nav-link">Alcatel</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="huawei">
+                                <button type="submit" class="nav-link">Huawei</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="lg">
+                                <button type="submit" class="nav-link">Lg</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="motorola">
+                                <button type="submit" class="nav-link">Motorola</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="nokia">
+                                <button type="submit" class="nav-link">Nokia</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="samsung">
+                                <button type="submit" class="nav-link">Samsung</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="tcl">
+                                <button type="submit" class="nav-link">Tcl</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="xiaomi">
+                                <button type="submit" class="nav-link">Xiaomi</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/productos" method="post">
+                                <input type="hidden" name="marca" value="zte">
+                                <button type="submit" class="nav-link">Zte</button>
+                            </form>
+                        </li>
+                        
+                    </ul>
+             
+                </div>
+
             </div>
-        <% } %>
-    <% } %>
-</div>
-  
-   
-<%- include ('../layouts/footer.ejs') %>
+
+
+        </div>
+        <div class="col-md-8">
+            <% for (let i=0; i<9 && i < productos.length; i++) { %>
+                <% if (i % 3===0) { %>
+                    <% } %>
+                        <a href="/comprar" class="container btn btn-light col-md-3 mb-2">
+                            <img src="/images/diseños1.jpg" class="img-fluid" alt="">
+                            <h5>
+                                <%= productos[i].Marca %>
+                                    <%= productos[i].Modelo %>
+                            </h5>
+                            <br>
+                            <h4>$<%= productos[i].Precio %>
+                            </h4>
+                        </a>
+                        <% if ((i + 1) % 3===0 || i===10) { %>
+                            <% } %>
+                                <% } %>
+
+        </div>
+    </div>
+
+
+
+    <%- include ('../layouts/footer.ejs') %>
