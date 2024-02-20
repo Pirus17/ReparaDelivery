@@ -10,9 +10,8 @@ module.exports = {
     },
 
     filtrar: function (req, res) {
-            console.log(req.body);
             producto.porMarca(conexion, req.body, function (err, datos) {
-            console.log(datos);
+                console.log(req.body);
             res.render('productos/index', { title: 'Productos',productos: datos});
         })
 
