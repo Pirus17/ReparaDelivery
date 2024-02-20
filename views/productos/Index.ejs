@@ -1,79 +1,97 @@
 <%-include ('../layouts/header') %>
     <H1 class="text-center textOfertas">PRODUCTOS</H1>
     <BR>
-
-    <!--contenedores de Productos-->
     <div class="row d-flex justify-content-center">
-        <div class="col-md-2">
-            <div class="row  align-items-start justify-content-end">
-                <div class="container fluid bg-white">                   
-                    <h3>Filtrar</h3>
-                    <hr>
-                    <h5>Marcas</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="alcatel">
-                                <button type="submit" class="nav-link">Alcatel</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="huawei">
-                                <button type="submit" class="nav-link">Huawei</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="lg">
-                                <button type="submit" class="nav-link">Lg</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="motorola">
-                                <button type="submit" class="nav-link">Motorola</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="nokia">
-                                <button type="submit" class="nav-link">Nokia</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="samsung">
-                                <button type="submit" class="nav-link">Samsung</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="tcl">
-                                <button type="submit" class="nav-link">Tcl</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="xiaomi">
-                                <button type="submit" class="nav-link">Xiaomi</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/productos" method="post">
-                                <input type="hidden" name="marca" value="zte">
-                                <button type="submit" class="nav-link">Zte</button>
-                            </form>
-                        </li>
-                        
-                    </ul>
-             
+        <div class="col-md-1">
+            <div class="row  align-items-start">
+                <div class="container fluid bg-white">
+                    <!--menu filtrar-->
+                    <nav class="navbar navbar-expand-lg bg-white">
+                        <div class="container-fluid justify-content-center">
+
+                            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                                aria-label="Toggle navigation">
+                                <h3>Filtrar</h3>
+                                <i class=" Filtrar bi bi-filter"></i>
+                            </button>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                                aria-labelledby="offcanvasNavbarLabel">
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title=" id="offcanvasNavbarLabel"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body d-flex">
+                                    <ul class="nav flex-column">
+                                        <h3>Filtrar</h3>
+                                        <hr>
+                                        <h5>Marcas</h5>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="alcatel">
+                                                <button type="submit" class="nav-link">Alcatel</button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="huawei">
+                                                <button type="submit" class="nav-link">Huawei</button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="lg">
+                                                <button type="submit" class="nav-link">Lg</button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="motorola">
+                                                <button type="submit" class="nav-link">Motorola</button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="nokia">
+                                                <button type="submit" class="nav-link">Nokia</button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="samsung">
+                                                <button type="submit" class="nav-link">Samsung</button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="tcl">
+                                                <button type="submit" class="nav-link">Tcl</button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="xiaomi">
+                                                <button type="submit" class="nav-link">Xiaomi</button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form action="/productos" method="post">
+                                                <input type="hidden" name="marca" value="zte">
+                                                <button type="submit" class="nav-link">Zte</button>
+                                            </form>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
-
             </div>
-
-
         </div>
+
+        <!--mostrar productos-->
         <div class="col-md-8">
             <% for (let i=0; i<9 && i < productos.length; i++) { %>
                 <% if (i % 3===0) { %>

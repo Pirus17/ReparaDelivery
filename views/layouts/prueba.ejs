@@ -40,3 +40,102 @@ router.get('/comprar', function(req, res, next) {
 router.get('/tecnico', function(req, res, next) {
   res.render('tecnico', { title: 'Tecnico' });
 });
+
+
+<!--menu productos-->
+<div class="row d-flex justify-content-center">
+  <div class="col-md-2">
+      <div class="row  align-items-start justify-content-end">
+          <div class="container fluid bg-white">
+              <!-- Botón para abrir/cerrar el menú en dispositivos móviles -->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuCollapse"
+                  aria-controls="menuCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- Menú envuelto dentro del contenedor collapse -->
+              <div class="collapse" id="menuCollapse">
+                  <h3>Filtrar</h3>
+                  <hr>
+                  <h5>Marcas</h5>
+                  <ul class="nav flex-column">
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="alcatel">
+                              <button type="submit" class="nav-link">Alcatel</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="huawei">
+                              <button type="submit" class="nav-link">Huawei</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="lg">
+                              <button type="submit" class="nav-link">Lg</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="motorola">
+                              <button type="submit" class="nav-link">Motorola</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="nokia">
+                              <button type="submit" class="nav-link">Nokia</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="samsung">
+                              <button type="submit" class="nav-link">Samsung</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="tcl">
+                              <button type="submit" class="nav-link">Tcl</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="xiaomi">
+                              <button type="submit" class="nav-link">Xiaomi</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <form action="/productos" method="post">
+                              <input type="hidden" name="marca" value="zte">
+                              <button type="submit" class="nav-link">Zte</button>
+                          </form>
+                      </li>
+
+                  </ul>
+
+              </div>
+
+          </div>
+
+      </div>
+
+
+  </div>
+
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+  aria-label="Toggle navigation">
+  <h3>Filtrar</h3>
+  <i class=" Filtrar bi bi-filter"></i>
+</button>
+
+<div class="offcanvas offcanvas-top offcanvas-Producto" tabindex="-1" id="offcanvasNavbar"
+  aria-labelledby="offcanvasNavbarLabel">
+  <div class="offcanvas-header">
+      <h5 class="offcanvas-title=" id="offcanvasNavbarLabel"></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+          aria-label="Close"></button>
+  </div>

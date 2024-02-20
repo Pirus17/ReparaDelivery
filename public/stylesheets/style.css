@@ -14,11 +14,7 @@ body{
 .navbar{
   background-color: white;
 }
-.offcanvas {
-  width: 200px; /* Ancho personalizado */
-  max-width: 40%;
-  max-height: 40%; /* Ancho máximo personalizado */
-}
+
 
 .contenedorBusqueda{
   background-color:white;
