@@ -1,12 +1,16 @@
 var conexion = require('../config/conexion');
-var producto = require('../model/productoModel');
+var compra = require('../model/compraModel');
 
 module.exports = {
 
     index: function (req, res) {
-        producto.obtener(conexion, function (err, datos) {
-            console.log(req.body);
-            res.render('compras/index', { title: 'Compras', productos: datos });
+        
+        compra.obtenerProducto(conexion, req.body, function (err, datos) {
+            console.log(datos);
+            res.render('compras/index', { title: 'Compras', Producto: datos});
+
         })
+        
+
     }
 }

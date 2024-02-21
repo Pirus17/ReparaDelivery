@@ -1,9 +1,9 @@
 const { query } = require("express");
 
 module.exports = {
-    obtener: function (conexion, funcion) {
-    let marca="tcl";
-     conexion.query("SELECT * FROM producto WHERE Marca=?",[marca],funcion);
+    obtenerProducto: function (conexion, IdProducto, funcion) {
+        console.log(IdProducto);
+     conexion.query("SELECT * FROM producto WHERE IdProducto = ?", [IdProducto.IdProducto],funcion);
     },
     
 }
