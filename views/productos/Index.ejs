@@ -4,7 +4,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-2">
             <div class="row  align-items-start">
-                <div class="container fluid bg-white">
+                <div class="container fluid bg-white rounded">
                     <!--menu filtrar-->
                     <nav class="navbar navbar-expand-lg bg-white">
                         <div class="container-fluid justify-content-center">
@@ -29,55 +29,55 @@
                                         <h5>Marcas</h5>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="alcatel">
+                                                <input type="hidden" name="marca" value="Alcatel">
                                                 <button type="submit" class="nav-link">Alcatel</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="huawei">
+                                                <input type="hidden" name="marca" value="Huawei">
                                                 <button type="submit" class="nav-link">Huawei</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="lg">
+                                                <input type="hidden" name="marca" value="Lg">
                                                 <button type="submit" class="nav-link">Lg</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="motorola">
+                                                <input type="hidden" name="marca" value="Motorola">
                                                 <button type="submit" class="nav-link">Motorola</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="nokia">
+                                                <input type="hidden" name="marca" value="Nokia">
                                                 <button type="submit" class="nav-link">Nokia</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="samsung">
+                                                <input type="hidden" name="marca" value="Samsung">
                                                 <button type="submit" class="nav-link">Samsung</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="tcl">
+                                                <input type="hidden" name="marca" value="Tcl">
                                                 <button type="submit" class="nav-link">Tcl</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="xiaomi">
+                                                <input type="hidden" name="marca" value="Xiaomi">
                                                 <button type="submit" class="nav-link">Xiaomi</button>
                                             </form>
                                         </li>
                                         <li class="nav-item">
                                             <form action="/productos" method="post">
-                                                <input type="hidden" name="marca" value="zte">
+                                                <input type="hidden" name="marca" value="Zte">
                                                 <button type="submit" class="nav-link">Zte</button>
                                             </form>
                                         </li>
@@ -93,31 +93,39 @@
 
         <!--mostrar productos-->
         <div class="col-md-8">
-            
             <% for (let i=0; i<9 && i < productos.length; i++) { %>
                 <% if (i % 3===0) { %>
-                    <% } %>
+                    <div class="row d-flex">
+                        <% } %>
+                        <div class="col-md-4 mb-2">
+                            <form action="/compras" method="post">
+                                <input type="hidden" name="IdProducto" value="<%= productos[i].IdProducto%>">
+                                <button type="submit" class="btn btn-outline-light text-dark bg-white">
+                                    <img src="/images/diseños1.jpg" class="img-fluid" alt="">
+                                    <h5>
+                                        <%= productos[i].Marca %>
+                                            <%= productos[i].Modelo %>
+                                    </h5>
+                                    <br>
+                                    <h4>$<%= productos[i].Precio %>
+                                    </h4>
+                                </button>
+                            </form>
 
-                        <form action="/compras" method="post">
-                            <input type="hidden" name="IdProducto" value="<%= productos[i].IdProducto%>">
-                            <button type="submit">
-                                <img src="/images/diseños1.jpg" class="img-fluid" alt="">
-                                <h5>
-                                    <%= productos[i].Marca %>
-                                        <%= productos[i].Modelo %>
-                                </h5>
-                                <br>
-                                <h4>$<%= productos[i].Precio %>
-                                </h4>
-                            </button>
-                        </form>
-                        <% if ((i + 1) % 3===0 || i===10) { %>
+                        </div>
+                            
+                    
+                    <% if ((i + 1) % 3===0 || i===10) { %>
+                    </div>
+                        <% } %>
                             <% } %>
-                                <% } %>
-
-
         </div>
+     
+
     </div>
+
+
+    
 
 
 

@@ -7,5 +7,10 @@ router.get('/', productoControllers.index);
 
 router.post('/', productoControllers.filtrar);
 
+router.post('/busqueda', productoControllers.barraBusqueda);
+
+
+
+
 
 module.exports = router;

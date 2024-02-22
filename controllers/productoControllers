@@ -5,14 +5,22 @@ module.exports = {
 
     index: function (req, res) {
         producto.obtener(conexion, function (err, datos) {
+           
             res.render('productos/index', { title: 'Productos', productos: datos });
         })
     },
 
     filtrar: function (req, res) {
-            producto.porMarca(conexion, req.body, function (err, datos) {
-               
-            res.render('productos/index', { title: 'Productos',productos: datos});
+        producto.porMarca(conexion, req.body, function (err, datos) {
+            
+            res.render('productos/index', { title: 'Productos', productos: datos });
+        })
+
+    },
+    barraBusqueda: function (req, res) {
+        producto.barraBusqueda(conexion, req.body, function (err, datos) {
+           
+            res.render('productos/index', { title: 'Productos', productos: datos });
         })
 
     }
