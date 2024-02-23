@@ -7,9 +7,7 @@ router.get('/', productoControllers.index);
 
 router.post('/', productoControllers.filtrar);
 
-router.post('/busqueda', productoControllers.barraBusqueda);
-
-
+router.post('/', productoControllers.barraBusqueda);
 
 
 
