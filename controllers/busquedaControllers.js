@@ -5,26 +5,22 @@ var marca, modelo;
 module.exports = {
 
     index: function (req, res) {
-    
         if (validarBusqueda(req.body)) {
-            producto.barraBusqueda(conexion, marca, function (err, datos) {
-                console.log(datos);
+            producto.barraBusqueda(conexion, marca, modelo, function (err, datos) {
+
                 res.render('productos/index', { title: 'Productos', productos: datos });
+
             });
-        } else {
-            res.render('productos/index', { title: 'Productos'});
+
+        }
     }
-    
-
-}
-
 }
 
 function validarBusqueda(marcaModelo) {
     if (elementoVacio(marcaModelo)) {
-        let dividir=marcaModelo.busqueda.split(" ");
-        marca=dividir[0];
-        modelo= dividir.slice(1).join(" ");
+        let dividir = marcaModelo.busqueda.split(" ");
+        marca = dividir[0];
+        modelo = dividir.slice(1).join(" ");
         return true;
     } else {
         return false;
@@ -33,6 +29,6 @@ function validarBusqueda(marcaModelo) {
 }
 
 function elementoVacio(marcaModelo) {
-    return (marcaModelo.busqueda && marcaModelo.busqueda.trim() !== '');    
+    return (marcaModelo.busqueda && marcaModelo.busqueda.trim() !== '');
 
 }
