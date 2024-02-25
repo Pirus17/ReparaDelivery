@@ -7,35 +7,41 @@ font-family: 'Poppins', sans-serif;
 * {
   font-family: 'Poppins', sans-serif;
 }
-body{
-  background-color:lightgray;
+
+body {
+  background-color: lightgray;
 }
 
-.navbar{
+.navbar {
   background-color: white;
 }
 
-.contenedorBusqueda{
-  background-color:white;
+.icono-usuario {
+  font-size: x-large;
+ 
 }
 
-.imagenPortada{
-  background-color:white;
+.contenedorBusqueda {
+  background-color: white;
+}
+
+.imagenPortada {
+  background-color: white;
 }
 
 .busqueda::placeholder {
   font-size: 85%;
-  
+
 }
-.textOfertas{
+
+.textOfertas {
   background-color: white;
 }
 
-.contenedorComprar{
+.contenedorComprar {
   background-color: white;
 }
 
 .nav-link {
   color: black;
 }
-
