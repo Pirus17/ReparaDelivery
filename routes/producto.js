@@ -5,9 +5,9 @@ const productoControllers= require('../controllers/productoControllers');
 /* GET home page (home page). */
 router.get('/', productoControllers.index);
 
-router.post('/', productoControllers.filtrar);
+router.post('/', productoControllers.index);
 
-router.post('/', productoControllers.barraBusqueda);
+
 
 
 

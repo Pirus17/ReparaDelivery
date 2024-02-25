@@ -12,11 +12,11 @@ module.exports = {
         producto.barraBusqueda(conexion, marca, modelo, function (err, datos) {
             console.log(datos);
             if (datos.length>0) { 
-                res.render('productos/index', { title: 'Productos', productos: datos });
+                let cantidad=datos.length;
+                res.render('filtrar/index', { title: 'Productos', productos: datos,cantidad});
             } else {
                 console.log("false");
                 res.render('busqueda/index', { title: 'Busqueda' });
-                
             }
 
 
