@@ -15,7 +15,6 @@ module.exports = {
                 let cantidad=datos.length;
                 res.render('filtrar/index', { title: 'Productos', productos: datos,cantidad});
             } else {
-                console.log("false");
                 res.render('busqueda/index', { title: 'Busqueda' });
             }
 
