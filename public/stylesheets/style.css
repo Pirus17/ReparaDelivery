@@ -11,13 +11,20 @@ font-family: 'Poppins', sans-serif;
 body {
   background-color: lightgray;
 }
-
-.navbar {
-  background-color: white;
+.listaMenu .nav-link {
+  color: white;
+  font-size: large;
 }
 
-.icono-usuario {
+.icono-usuario{
   font-size: x-large;
+  fill: white;
+ 
+}
+
+.icono-usuario{
+  font-size: x-large;
+  
  
 }
 
