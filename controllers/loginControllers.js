@@ -4,30 +4,54 @@ var alert;
 
 module.exports = {
 
-    index: function (req, res) {
-        alert=false;
-        res.render('login/index', { login: 'Login',alert });
+  index: function (req, res) {
+    alert = false;
+    res.render('login/index', { login: 'Login', alert });
 
-    },
+  },
 
-    datosUsuario: function (req, res) {
-        login.buscarTecnico(conexion, req.body, function (err, datos) {
-          if (datos.length >0) {
-            res.render('login/usuarioTecnico', { usuarioTecnico: 'UsuarioTecnico' });
+  cuentaUsuario: function (req, res) {
+    login.buscarTecnico(conexion, req.body, function (err, datos) {
+      if (datos.length > 0) {
+        res.render('login/usuarioTecnico', { usuarioTecnico: 'UsuarioTecnico' });
+      } else {
+
+        login.buscarCliente(conexion, req.body, function (err, datos) {
+          if (datos.length > 0) {
+            res.render('login/usuarioCliente', { usuarioCliente: 'UsuarioCliente' });
           } else {
-          
-            login.buscarCliente(conexion, req.body, function (err, datos) {      
-                if (datos.length >0) {
-                  res.render('login/usuarioCliente', { usuarioCliente: 'UsuarioCliente' });
-                } else {
-                  alert=true;
-                  res.render('login/index', { login: 'Login',alert});
-                }  
-                
-              });
-          }  
-          
+            alert = true;
+            res.render('login/index', { login: 'Login', alert });
+          }
+
         });
-       
-    }
+      }
+
+    });
+
+  },
+  indexRegistro: function (req, res) {
+
+    res.render('login/registrarUsuario', { login: 'Login'});
+
+  },
+
+  RegistrarUsuario: function (req, res) {
+    console.log(req.body);
+    res.render('login/registrarUsuario', { login: 'Login'});
+  /*login.buscarCliente(conexion, req.body, function (err, datos) {
+      
+      
+      if (datos.length > 0) {
+        res.render('login/usuarioCliente', { usuarioCliente: 'UsuarioCliente' });
+      } else {
+        alert = true;
+        res.render('login/index', { login: 'Login', alert });
+      }
+      
+
+    });*/
+
+  }
+
 }
