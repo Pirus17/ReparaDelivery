@@ -22,6 +22,17 @@
             <a href="#" class="navbar-brand text-dark"><span class="text-light me-auto">Repara</span>Delivery</a>
     </nav>
     <div class="col-md-5 mx-auto">
+        <% if (alert) { %>
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <i class="bi bi-exclamation-triangle"></i>
+                <div>
+                    Usuario no registrado
+                </div>
+            </div>
+            <% } %>
+
+    </div>
+    <div class="col-md-5 mx-auto">
         <div class="container fluid bg-white rounded shadow">
             <h4 class="d-flex justify-content-center mb-5"> Ingresa a Repara Delivery</h4>
 
@@ -37,7 +48,8 @@
 
                 <div class="form-group mb-3">
                     <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="contraseña">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña"
+                        name="contraseña">
                 </div>
                 <div class="form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -50,12 +62,7 @@
                     <button type="submit" class="btn btn btn-outline-secondary">Registrarme</button>
                 </div>
                 <br>
-                
+
             </form>
-
-
-
-
-
         </div>
     </div>
