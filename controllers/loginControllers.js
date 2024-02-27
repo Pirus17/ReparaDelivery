@@ -13,10 +13,12 @@ module.exports = {
         login.buscarTecnico(conexion,req.body,function(err,datos){
 
     });
-    if (datos.len) {
+    if (datos.lenght>0) {
         res.render('login/index', { login: 'Login', usuario:datos});
     } else {
-        
+        login.buscarTecnico(conexion,req.body,function(err,datos){
+
+        });
     }
 
     }
