@@ -31,16 +31,21 @@ module.exports = {
 
   },
   indexRegistro: function (req, res) {
-
-    res.render('login/registrarUsuario', { login: 'Login' });
+    alert=false;
+    res.render('login/registrarUsuario', { login: 'Login', alert });
 
   },
 
   RegistrarUsuario: function (req, res) {
-
     login.buscarCliente(conexion, req.body, function (err, datos) {
+      console.log(req.body);
+      console.log(datos);
       if (datos.length===0) {
-          res.send(req.body);
+        console.log(true);
+        login.insertarCliente(conexion, req.body, function (err) {
+        res.send(req.body);      
+    
+        });      
       } else {
         alert=true;
         res.render('login/registrarUsuario', { login: 'Login',alert});
