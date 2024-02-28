@@ -4,6 +4,7 @@ var filtrar = require('../model/filtrarModel');
 module.exports = {
 
     index: function (req, res) {
+       
         filtrar.porMarca(conexion, req.body, function (err, datos) {
             cantidad=datos.length;
 

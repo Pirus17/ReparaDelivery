@@ -32,25 +32,21 @@ module.exports = {
   },
   indexRegistro: function (req, res) {
 
-    res.render('login/registrarUsuario', { login: 'Login'});
+    res.render('login/registrarUsuario', { login: 'Login' });
 
   },
 
   RegistrarUsuario: function (req, res) {
-    console.log(req.body);
-    res.render('login/registrarUsuario', { login: 'Login'});
-  /*login.buscarCliente(conexion, req.body, function (err, datos) {
-      
-      
-      if (datos.length > 0) {
-        res.render('login/usuarioCliente', { usuarioCliente: 'UsuarioCliente' });
-      } else {
-        alert = true;
-        res.render('login/index', { login: 'Login', alert });
-      }
-      
 
-    });*/
+    login.buscarCliente(conexion, req.body, function (err, datos) {
+      if (datos.length===0) {
+          res.send(req.body);
+      } else {
+        alert=true;
+        res.render('login/registrarUsuario', { login: 'Login',alert});
+      }
+
+    });
 
   }
 

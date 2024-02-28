@@ -5,15 +5,37 @@
 
             <form method="post" action="/login/registrarUsuario">
                 <div class="col-md-8 mx-auto mb-5">
-                    <label class=" mb-3">Los marcacados (*) son obligatorios</label>
+                    <% if (alert) { %>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <i class="bi bi-exclamation-triangle"></i>
+                            <div>
+                                Correo electrónico ya registrado
+                            </div>
+                        </div>
+                        <% } %>
+                    <div class="input-group mb-3">
+                        <label class=" mb-3">Los marcacados (*) son obligatorios</label>
+                        <span class="input-group-text">Correo Electronico</span>
+                        <input name="email" type="email" class="form-control" placeholder="* Correo Electronico"
+                            aria-label="Username">
+
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Contraseña</span>
+                        <input name="contrasenia" type="text" class="form-control" placeholder="* Correo Electronico"
+                            aria-label="Username">
+
+                    </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Nombre</span>
-                        <input name="nombre" type="text" class="form-control" placeholder="* Nombre" aria-label="Username">
+                        <input name="nombre" type="text" class="form-control" placeholder="* Nombre"
+                            aria-label="Username">
 
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Apellido</span>
-                        <input name="apellido" type="text" class="form-control" placeholder="* Apellido" aria-label="Username">
+                        <input name="apellido" type="text" class="form-control" placeholder="* Apellido"
+                            aria-label="Username">
 
                     </div>
                     <div class="input-group mb-3">
@@ -26,31 +48,28 @@
                         <span class="input-group-text">Numero</span>
                         <input name="numero" type="text" class="form-control" placeholder="Nº" aria-label="Username">
                         <span class="input-group-text">Barrio</span>
-                        <input name="barrio" type="text" class="form-control" placeholder="Barrio" aria-label="Username">
+                        <input name="barrio" type="text" class="form-control" placeholder="Barrio"
+                            aria-label="Username">
                     </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="inputGroupSelect02">Provincia</label>
-                        <select name="provincia" class="form-select" id="inputGroupSelect02" >
+                        <select name="provincia" class="form-select" id="inputGroupSelect02">
                             <option selected>Elegir...</option>
-                            <option  value="Santiago del Estero">Santiago del estero</option>
+                            <option value="Santiago del Estero">Santiago del estero</option>
                         </select>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Correo Electronico</span>
-                        <input name="correo" type="email" class="form-control" placeholder="* Correo Electronico"
-                            aria-label="Username">
-
-                    </div>
                     <div class="input-group">
                         <span class="input-group-text">Teléfono</span>
-                        
+
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Cod Area</span>
-                        <input name="codigo" type="text" class="form-control" placeholder="* Ej: 385" aria-label="Username">
+                        <input name="codigo" type="text" class="form-control" placeholder="* Ej: 385"
+                            aria-label="Username">
                         <span class="input-group-text">Numero</span>
-                        <input name="numerotel" type="text" class="form-control" placeholder="* sin 15" aria-label="Username">
+                        <input name="numerotel" type="text" class="form-control" placeholder="* sin 15"
+                            aria-label="Username">
                     </div>
 
 
