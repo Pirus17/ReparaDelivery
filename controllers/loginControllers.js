@@ -38,12 +38,28 @@ module.exports = {
 
   RegistrarUsuario: function (req, res) {
     login.buscarCliente(conexion, req.body, function (err, datos) {
-      console.log(req.body);
+
       console.log(datos);
+
       if (datos.length===0) {
-        console.log(true);
+
         login.insertarCliente(conexion, req.body, function (err) {
-        res.send(req.body);      
+        
+          login.buscarCliente(conexion, req.body, function (err, datos) {
+            console.log(datos);
+            console.log(datos.IdCliente);
+            let IdCliente= datos[0].IdCliente;
+            login.insertarUsuario(conexion, IdCliente, req.body, function (err) {
+              console.log(datos);
+              
+  
+              res.send(req.body);
+        
+            });  
+
+            res.send(req.body);
+      
+          });
     
         });      
       } else {
