@@ -1,8 +1,14 @@
 const { query } = require("express");
 
 module.exports = {
-    buscarTecnico: function (conexion, email, funcion) {
-        conexion.query("SELECT * FROM tecnico  WHERE email=?", [email.email], funcion);
+    buscarUsuario: function (conexion, email, funcion) {
+        conexion.query("SELECT * FROM usuario  WHERE Email=?", [email.email], funcion);
+    },
+
+    insertarUsuario: function (conexion, usuario, funcion) {
+        console.log(usuario);
+        conexion.query("INSERT INTO usuario (email, contrasenia, fechaRegistro, IdRol) VALUES (?,?,NOW(),1)" , 
+        [usuario.email,usuario.contrasenia], funcion);
     },
 
     buscarCliente: function (conexion, email, funcion) {
@@ -14,13 +20,6 @@ module.exports = {
         conexion.query("INSERT INTO cliente (apellido, nombre, direccion, numero, barrio, provincia, email, codigo, numerotelefono) VALUES (?,?,?,?,?,?,?,?,?)" , 
         [cliente.apellido, cliente.nombre, cliente.direccion, cliente.numero, cliente.barrio, cliente.provincia, cliente.email, cliente.codigo, cliente.numeroTelefono], funcion);
     },
-
-    insertarUsuario: function (conexion, Idcliente, cliente, funcion) {
-        console.log(idCliente);
-        
-        conexion.query("INSERT INTO usuario (contrasenia, FechadeRegistro, UltimoAcceso, idcliente, idTecnico) VALUES (?,NOW(),NOW(),?,NULL)" , 
-        [cliente.contrasenia, IdCliente], funcion);
-    }
 
 
 }
