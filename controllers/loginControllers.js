@@ -12,40 +12,44 @@ module.exports = {
 
   cuentaUsuario: function (req, res) {
     login.buscarUsuario(conexion, req.body, function (err, datos) {
-      console.log(datos);
-      console.log(datos.length);
-      console.log(req.body);
-      if (datos.length===0) {
-        login.insertarUsuario(conexion, req.body, function (err, datos) {
-          res.render('login/index', { login: 'Login', alert });
-          });
-          
+      if (datos.length > 0) {
+        switch (datos[0].IdRol) {
+          case 1: res.send("administrador");
+            break;
+          case 2: res.render('login/usuarioTecnico', { usuarioCliente: 'Tecnico' });
+            break;
+          case 3: res.render('login/usuarioCliente', { usuarioCliente: 'Cliente' });;
+            break;
+          default:
+            break;
+        }
+
       } else {
         alert = true;
-            res.render('login/index', { login: 'Login', alert });
+        res.render('login/index', { login: 'Login', alert });
       }
+    });
+
+
+
+
+
+    /*if (datos.length > 0) {
+      C
+    } else {
+
+      login.buscarCliente(conexion, req.body, function (err, datos) {
+        if (datos.length > 0) {
+          res.render('login/usuarioCliente', { usuarioCliente: 'UsuarioCliente' });
+        } else {
+          alert = true;
+          res.render('login/index', { login: 'Login', alert });
+        }
+
       });
-      
-      
+    }*/
 
 
-
-      /*if (datos.length > 0) {
-        res.render('login/usuarioTecnico', { usuarioTecnico: 'UsuarioTecnico' });
-      } else {
-
-        login.buscarCliente(conexion, req.body, function (err, datos) {
-          if (datos.length > 0) {
-            res.render('login/usuarioCliente', { usuarioCliente: 'UsuarioCliente' });
-          } else {
-            alert = true;
-            res.render('login/index', { login: 'Login', alert });
-          }
-
-        });
-      }*/
-
-    
 
   },
   indexRegistro: function (req, res) {

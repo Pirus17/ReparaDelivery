@@ -6,8 +6,7 @@ module.exports = {
     },
 
     insertarUsuario: function (conexion, usuario, funcion) {
-        console.log(usuario);
-        conexion.query("INSERT INTO usuario (email, contrasenia, fechaRegistro, IdRol) VALUES (?,?,NOW(),1)" , 
+        conexion.query("INSERT INTO usuario (email, contrasenia, fechaRegistro, IdRol) VALUES (?,?,NOW(),3)" , 
         [usuario.email,usuario.contrasenia], funcion);
     },
 
