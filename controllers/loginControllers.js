@@ -43,12 +43,13 @@ module.exports = {
       console.log(datos);
       if (datos.length === 0) {
         console.log(true);
-        alert = false;
-        let usu=datos[0];
-        console.log(usu.IdRol);
-        /*login.insertarCliente(conexion, req.body, datos[0].IdRol, function (err) {
-          
-        });*/
+        login.insertarUsuario(conexion, req.body, function (err) {
+          registrarCliente(req.body);
+          alert = false;
+          res.render('login/registrarUsuario', { login: 'Login', alert });
+    
+        });
+
 
       } else {
 
@@ -58,36 +59,16 @@ module.exports = {
 
   }
 
-  /*login.buscarCliente(conexion, req.body, function (err, datos) {
+}
 
-  console.log(datos);
-
-  if (datos.length === 0) {
-
-    login.insertarCliente(conexion, req.body, function (err) {
-
-      login.buscarCliente(conexion, req.body, function (err, datos) {
-        console.log(datos);
-        console.log(datos.IdCliente);
-        let IdCliente = datos[0].IdCliente;
-        login.insertarUsuario(conexion, IdCliente, req.body, function (err) {
-          console.log(datos);
-
-
-          res.send(req.body);
-
-        });
-
-        res.send(req.body);
-
-      });
-
+function registrarCliente(cliente) {
+  login.buscarUsuario(conexion, cliente, function (err, datos) {
+    login.insertarCliente(conexion, cliente,datos[0].IdUsuario, function (err) {
+      login.insertarActividad(conexion, 'registro',datos[0].IdUsuario, function (err) {
+     
+      }); 
     });
-  } else {
-    alert = true;
-    res.render('login/registrarUsuario', { login: 'Login', alert });
-  }
 
-});*/
 
+  });
 }

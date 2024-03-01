@@ -14,12 +14,16 @@ module.exports = {
         conexion.query("SELECT * FROM cliente WHERE Email= ?", [email.email], funcion);
     },
 
-    insertarCliente: function (conexion, cliente, idUsuario, funcion) {
-        console.log(cliente);
-        console.log(idUsuario);
+    insertarCliente: function (conexion, cliente, IdUsuario, funcion) {
         conexion.query("INSERT INTO cliente (apellido, nombre, direccion, numero, barrio, provincia, codigo, numerotelefono, IdUsuario) VALUES (?,?,?,?,?,?,?,?,?)" , 
-        [cliente.apellido, cliente.nombre, cliente.direccion, cliente.numero, cliente.barrio, cliente.provincia, cliente.codigo, cliente.numeroTelefono, idUsuario], funcion);
+        [cliente.apellido, cliente.nombre, cliente.direccion, cliente.numero, cliente.barrio, cliente.provincia, cliente.codigo, cliente.numeroTelefono, IdUsuario], funcion);
     },
 
+    insertarActividad: function (conexion, IdUsuario, actividad, funcion) {
+        console.log(IdUsuario);
+        console.log(actividad);
+        conexion.query("INSERT INTO actividad (tipoactividad, fechaActividad, IdUsuario) VALUES (?,NOW(),?)" , 
+        [actividad,  IdUsuario], funcion);
+    }
 
 }
