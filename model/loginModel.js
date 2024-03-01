@@ -14,10 +14,11 @@ module.exports = {
         conexion.query("SELECT * FROM cliente WHERE Email= ?", [email.email], funcion);
     },
 
-    insertarCliente: function (conexion, cliente, funcion) {
-        
-        conexion.query("INSERT INTO cliente (apellido, nombre, direccion, numero, barrio, provincia, email, codigo, numerotelefono) VALUES (?,?,?,?,?,?,?,?,?)" , 
-        [cliente.apellido, cliente.nombre, cliente.direccion, cliente.numero, cliente.barrio, cliente.provincia, cliente.email, cliente.codigo, cliente.numeroTelefono], funcion);
+    insertarCliente: function (conexion, cliente, idUsuario, funcion) {
+        console.log(cliente);
+        console.log(idUsuario);
+        conexion.query("INSERT INTO cliente (apellido, nombre, direccion, numero, barrio, provincia, codigo, numerotelefono, IdUsuario) VALUES (?,?,?,?,?,?,?,?,?)" , 
+        [cliente.apellido, cliente.nombre, cliente.direccion, cliente.numero, cliente.barrio, cliente.provincia, cliente.codigo, cliente.numeroTelefono, idUsuario], funcion);
     },
 
 

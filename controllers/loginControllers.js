@@ -31,26 +31,6 @@ module.exports = {
     });
 
 
-
-
-
-    /*if (datos.length > 0) {
-      C
-    } else {
-
-      login.buscarCliente(conexion, req.body, function (err, datos) {
-        if (datos.length > 0) {
-          res.render('login/usuarioCliente', { usuarioCliente: 'UsuarioCliente' });
-        } else {
-          alert = true;
-          res.render('login/index', { login: 'Login', alert });
-        }
-
-      });
-    }*/
-
-
-
   },
   indexRegistro: function (req, res) {
     alert = false;
@@ -59,38 +39,55 @@ module.exports = {
   },
 
   RegistrarUsuario: function (req, res) {
-    login.buscarCliente(conexion, req.body, function (err, datos) {
-
+    login.buscarUsuario(conexion, req.body, function (err, datos) {
       console.log(datos);
-
       if (datos.length === 0) {
+        console.log(true);
+        alert = false;
+        let usu=datos[0];
+        console.log(usu.IdRol);
+        /*login.insertarCliente(conexion, req.body, datos[0].IdRol, function (err) {
+          
+        });*/
 
-        login.insertarCliente(conexion, req.body, function (err) {
-
-          login.buscarCliente(conexion, req.body, function (err, datos) {
-            console.log(datos);
-            console.log(datos.IdCliente);
-            let IdCliente = datos[0].IdCliente;
-            login.insertarUsuario(conexion, IdCliente, req.body, function (err) {
-              console.log(datos);
-
-
-              res.send(req.body);
-
-            });
-
-            res.send(req.body);
-
-          });
-
-        });
       } else {
-        alert = true;
-        res.render('login/registrarUsuario', { login: 'Login', alert });
+
       }
 
     });
 
   }
+
+  /*login.buscarCliente(conexion, req.body, function (err, datos) {
+
+  console.log(datos);
+
+  if (datos.length === 0) {
+
+    login.insertarCliente(conexion, req.body, function (err) {
+
+      login.buscarCliente(conexion, req.body, function (err, datos) {
+        console.log(datos);
+        console.log(datos.IdCliente);
+        let IdCliente = datos[0].IdCliente;
+        login.insertarUsuario(conexion, IdCliente, req.body, function (err) {
+          console.log(datos);
+
+
+          res.send(req.body);
+
+        });
+
+        res.send(req.body);
+
+      });
+
+    });
+  } else {
+    alert = true;
+    res.render('login/registrarUsuario', { login: 'Login', alert });
+  }
+
+});*/
 
 }
