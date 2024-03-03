@@ -19,11 +19,10 @@ module.exports = {
         [cliente.apellido, cliente.nombre, cliente.direccion, cliente.numero, cliente.barrio, cliente.provincia, cliente.codigo, cliente.numeroTelefono, IdUsuario], funcion);
     },
 
-    insertarActividad: function (conexion, IdUsuario, actividad, funcion) {
+    insertarActividad: function (conexion, actividad, IdUsuario, funcion) {
         console.log(IdUsuario);
         console.log(actividad);
-        conexion.query("INSERT INTO actividad (tipoactividad, fechaActividad, IdUsuario) VALUES (?,NOW(),?)" , 
-        [actividad,  IdUsuario], funcion);
+        conexion.query("INSERT INTO actividad (tipoactividad, fechaActividad, IdUsuario) VALUES (?,NOW(),?)" , [actividad,  IdUsuario], funcion);
     }
 
 }

@@ -64,7 +64,7 @@ module.exports = {
 function registrarCliente(cliente) {
   login.buscarUsuario(conexion, cliente, function (err, datos) {
     login.insertarCliente(conexion, cliente,datos[0].IdUsuario, function (err) {
-      login.insertarActividad(conexion, 'registro',datos[0].IdUsuario, function (err) {
+      login.insertarActividad(conexion, "Registro",datos[0].IdUsuario, function (err) {
      
       }); 
     });
