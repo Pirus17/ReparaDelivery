@@ -1,0 +1,101 @@
+<script>
+
+    const inputs = document.querySelectorAll('#formulario input');
+    const mensajeError = document.getElementById('mensaje-error');
+
+    const expresiones = {
+        email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+        contrasenia: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{4,8}$/, // 4 a 8 caracteres, al menos una mayúscula y un número.
+        nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+        apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+        direccion: /^[a-zA-Z\d\s]{1,100}$/, // Letras, números y espacios, pueden llevar acentos.
+        numero: /^\d{1,10}$/, // Solo números, hasta 10 dígitos.
+        barrio: /^[a-zA-Z\d\s]{1,100}$/, // Letras, números y espacios, pueden llevar acentos.
+        provincia: /Santiago del Estero/, // Por el momento Santiago del Estero nomás es válida.
+        codigo: /^\d{1,10}$/, // 1 a 10 números.
+        numeroTelefono: /^\d{1,20}$/ // 1 a 20 números.
+    };
+
+    const mensajes = {
+        email: "mail mal puesto",
+        contrasenia: "password error",
+        nombre: false,
+        apellido: false,
+        direccion: false,
+        numero: false,
+        barrio: false,
+        provincia: false,
+        codigo: false,
+        numeroTelefono: false
+    }
+
+    const campos = {
+        email: false,
+        password: false,
+        nombre: false,
+        apellido: false,
+        direccion: false,
+        numero: false,
+        barrio: false,
+        provincia: false,
+        codigo: false,
+        numeroTelefono: false
+    }
+    const validarFormulario = (e) => {
+        switch (e.target.name) {
+            case "email":
+                validarCampo(expresiones.email, e.target, 'email');
+                break;
+            case "contrasenia":
+                validarCampo(expresiones.contrasenia, e.target, 'contrasenia');
+                break;
+            case "nombre":
+                validarCampo(expresiones.nombre, e.target, 'nombre');
+                break;
+            case "apellido":
+                validarCampo(expresiones.apellido, e.target, 'apellido');
+                break;
+            case "dirreccion":
+                validarCampo(expresiones.direccion, e.target, 'direccion');
+                break;
+            case "numero":
+                validarCampo(expresiones.numero, e.target, 'numero');
+                break;
+            case "barrio":
+                validarCampo(expresiones.barrio, e.target, 'barrrio');
+                break;
+            case "provincia":
+                validarCampo(expresiones.provincia, e.target, 'provincia');
+                break;
+            case "codigo":
+                validarCampo(expresiones.codigo, e.target, 'codigo');
+                break;
+            case "numeroTelefono":
+                validarCampo(expresiones.numeroTelefono, e.target, 'numeroTelefono');
+                break;
+        }
+    }
+
+    // Función para validar el formato del correo electrónico
+    const validarCampo = (expresion, input, campo) => {
+        if (expresion.test(input.value)) {
+            mensajeError.textContent = ''; // Si el formato es válido, borra el mensaje de error
+            document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+            document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+        } else {
+            mensajeError.textContent = campo;
+            document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+            document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+        }
+
+    }
+
+
+    inputs.forEach((input) => {
+        input.addEventListener('keyup', validarFormulario);
+        input.addEventListener('blur', validarFormulario);
+    });
+
+
+</script>
+

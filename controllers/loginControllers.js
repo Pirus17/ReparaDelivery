@@ -72,3 +72,8 @@ function registrarCliente(cliente) {
 
   });
 }
+
+function validadDatos(datos){
+
+
+}

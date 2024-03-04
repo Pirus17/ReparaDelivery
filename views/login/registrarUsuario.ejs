@@ -3,7 +3,7 @@
         <div class="container fluid bg-white rounded shadow">
             <h4 class="d-flex justify-content-center mb-5"> Registro de cuenta para Repara Delivery</h4>
 
-            <form method="post" action="/login/registrarUsuario">
+            <form method="post" action="/login/registrarUsuario"  class="formulario" id="formulario">
                 <div class="col-md-8 mx-auto mb-5">
                     <% if (alert) { %>
                         <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -14,38 +14,43 @@
                         </div>
                         <% } %>
                             <label class=" mb-3">Los marcacados (*) son obligatorios</label>
-                            <div class="input-group mb-3">
 
+                            <div class="input-group mb-3" id="grupo__email">
                                 <span class="input-group-text">Correo Electronico</span>
-                                <input name="email" type="email" class="form-control" placeholder="* Correo Electronico"
-                                    aria-label="Username">
-
+                                <input name="email" type="text" class="form-control" id="email"
+                                    placeholder="* Correo Electronico" aria-label="email">
+                                
                             </div>
-                            <div class="input-group mb-3">
+                            <div id="mensaje-error" style="color: red;"></div>
+
+                            <div class="input-group mb-3" id="grupo__contrasenia">
                                 <span class="input-group-text">Contraseña</span>
                                 <input name="contrasenia" type="text" class="form-control"
                                     placeholder="* Correo Electronico" aria-label="Username">
 
                             </div>
-                            <div class="input-group mb-3">
+                            
+                            <div class="input-group mb-3" id="grupo__nombre">
                                 <span class="input-group-text">Nombre</span>
                                 <input name="nombre" type="text" class="form-control" placeholder="* Nombre"
                                     aria-label="Username">
 
                             </div>
-                            <div class="input-group mb-3">
+
+                            <div class="input-group mb-3" id="grupo__apellido">
                                 <span class="input-group-text">Apellido</span>
                                 <input name="apellido" type="text" class="form-control" placeholder="* Apellido"
                                     aria-label="Username">
-
                             </div>
-                            <div class="input-group mb-3">
+
+                            <div class="input-group mb-3" id="grupo__direccion">
                                 <span class="input-group-text">Dirección</span>
                                 <input name="direccion" type="text" class="form-control"
                                     placeholder="* calle o manza y lote" aria-label="Username">
 
                             </div>
-                            <div class="input-group mb-3">
+
+                            <div class="input-group mb-3" id="grupo__numero">
                                 <span class="input-group-text">Numero</span>
                                 <input name="numero" type="text" class="form-control" placeholder="Nº"
                                     aria-label="Username">
@@ -53,6 +58,8 @@
                                 <input name="barrio" type="text" class="form-control" placeholder="Barrio"
                                     aria-label="Username">
                             </div>
+                            <div id="mensaje-error" style="color: red;"></div>
+
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="inputGroupSelect02">Provincia</label>
                                 <select name="provincia" class="form-select" id="inputGroupSelect02">
@@ -65,6 +72,7 @@
                                 <span class="input-group-text">Teléfono</span>
 
                             </div>
+                            
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Cod Area</span>
                                 <input name="codigo" type="text" class="form-control" placeholder="* Ej: 385"
@@ -79,7 +87,7 @@
 
 
                 <div class="d-grid gap-2 col-5 mx-auto">
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <button type="submit" class="btn btn-primary" disabled>Registrarse</button>
                     <br>
 
                 </div>
@@ -89,5 +97,5 @@
 
         </div>
     </div>
-
+    <%-include ('../login/layouts/validacion') %>
     <%-include ('../login/layouts/footer') %>
