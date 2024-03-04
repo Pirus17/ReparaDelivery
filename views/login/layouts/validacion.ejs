@@ -1,7 +1,7 @@
 <script>
 
     const inputs = document.querySelectorAll('#formulario input');
-    const mensajeError = document.getElementById('mensaje-error');
+    
 
     const expresiones = {
         email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -44,10 +44,10 @@
     const validarFormulario = (e) => {
         switch (e.target.name) {
             case "email":
-                validarCampo(expresiones.email, e.target, 'email');
+                validarCampo(expresiones.email, e.target, 'email', mensajes.email);
                 break;
             case "contrasenia":
-                validarCampo(expresiones.contrasenia, e.target, 'contrasenia');
+                validarCampo(expresiones.contrasenia, e.target, 'contrasenia', mensajes.contrasenia);
                 break;
             case "nombre":
                 validarCampo(expresiones.nombre, e.target, 'nombre');
@@ -77,13 +77,14 @@
     }
 
     // Función para validar el formato del correo electrónico
-    const validarCampo = (expresion, input, campo) => {
+    const validarCampo = (expresion, input, campo, mensaje) => {
+        const mensajeError = document.getElementById(`mensaje-${campo}`);
         if (expresion.test(input.value)) {
             mensajeError.textContent = ''; // Si el formato es válido, borra el mensaje de error
             document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
             document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
         } else {
-            mensajeError.textContent = campo;
+            mensajeError.textContent = mensaje;
             document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
             document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
         }
