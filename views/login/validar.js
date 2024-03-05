@@ -90,7 +90,7 @@ inputs.forEach((input) => {
 
 
 
-formulario.addEventListener('submit', (e) => {
+formulairo.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	const terminos = document.getElementById('terminos');

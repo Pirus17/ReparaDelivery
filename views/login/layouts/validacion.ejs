@@ -1,44 +1,43 @@
 <script>
-
+    const formulario = document.getElementById('formulario');
     const inputs = document.querySelectorAll('#formulario input');
-    
+
+
+
 
     const expresiones = {
         email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-        contrasenia: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{4,8}$/, // 4 a 8 caracteres, al menos una mayúscula y un número.
-        nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+        contrasenia: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8}$/, // 4 a 8 caracteres, al menos una mayúscula y un número.
+        nombre: /^[a-zA-Z\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
         apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
         direccion: /^[a-zA-Z\d\s]{1,100}$/, // Letras, números y espacios, pueden llevar acentos.
         numero: /^\d{1,10}$/, // Solo números, hasta 10 dígitos.
-        barrio: /^[a-zA-Z\d\s]{1,100}$/, // Letras, números y espacios, pueden llevar acentos.
+        barrio: /^[a-zA-Z\d\s]{1,30}$/, // Letras, números y espacios, pueden llevar acentos.
         provincia: /Santiago del Estero/, // Por el momento Santiago del Estero nomás es válida.
-        codigo: /^\d{1,10}$/, // 1 a 10 números.
-        numeroTelefono: /^\d{1,20}$/ // 1 a 20 números.
+        numeroTelefono: /^\d{1,40}$/ // 1 a 20 números.
     };
 
     const mensajes = {
-        email: "mail mal puesto",
-        contrasenia: "password error",
-        nombre: false,
-        apellido: false,
-        direccion: false,
-        numero: false,
-        barrio: false,
-        provincia: false,
-        codigo: false,
-        numeroTelefono: false
+        email: "Formato correo electrónico incorrecto.",
+        contrasenia: "La contraseña debe tener por lo menos una mayúscula, un número y como máximo 8 caracteres.",
+        nombre: "Debe contener el/los nombre/s.",
+        apellido: "Debe contener el/los apellido/s.",
+        direccion: "Debe contener la calle o manzana y lote.",
+        numero: "Debe contener solo números.",
+        barrio: "Debe contener el barrio.",
+        provincia: "Debe seleccionar la provincia.",
+        numeroTelefono: "Debe contener el número sin el 15"
     }
 
     const campos = {
         email: false,
-        password: false,
+        contrasenia: false,
         nombre: false,
         apellido: false,
         direccion: false,
         numero: false,
         barrio: false,
-        provincia: false,
-        codigo: false,
+        provincia: true,
         numeroTelefono: false
     }
     const validarFormulario = (e) => {
@@ -50,28 +49,25 @@
                 validarCampo(expresiones.contrasenia, e.target, 'contrasenia', mensajes.contrasenia);
                 break;
             case "nombre":
-                validarCampo(expresiones.nombre, e.target, 'nombre');
+                validarCampo(expresiones.nombre, e.target, 'nombre', mensajes.nombre);
                 break;
             case "apellido":
-                validarCampo(expresiones.apellido, e.target, 'apellido');
+                validarCampo(expresiones.apellido, e.target, 'apellido', mensajes.apellido);
                 break;
-            case "dirreccion":
-                validarCampo(expresiones.direccion, e.target, 'direccion');
+            case "direccion":
+                validarCampo(expresiones.direccion, e.target, 'direccion', mensajes.direccion);
                 break;
             case "numero":
-                validarCampo(expresiones.numero, e.target, 'numero');
+                validarCampo(expresiones.numero, e.target, 'numero', mensajes.numero);
                 break;
             case "barrio":
-                validarCampo(expresiones.barrio, e.target, 'barrrio');
+                validarCampo(expresiones.barrio, e.target, 'barrio', mensajes.barrio);
                 break;
             case "provincia":
-                validarCampo(expresiones.provincia, e.target, 'provincia');
-                break;
-            case "codigo":
-                validarCampo(expresiones.codigo, e.target, 'codigo');
+                validarCampo(expresiones.provincia, e.target, 'provincia', mensajes.provincia);
                 break;
             case "numeroTelefono":
-                validarCampo(expresiones.numeroTelefono, e.target, 'numeroTelefono');
+                validarCampo(expresiones.numeroTelefono, e.target, 'numeroTelefono', mensajes.numeroTelefono);
                 break;
         }
     }
@@ -83,10 +79,12 @@
             mensajeError.textContent = ''; // Si el formato es válido, borra el mensaje de error
             document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
             document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+            campos[campo] = true;
         } else {
             mensajeError.textContent = mensaje;
             document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
             document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+            campos[campo] = false;
         }
 
     }
@@ -98,5 +96,27 @@
     });
 
 
-</script>
+    formulario.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const provincia = document.getElementById(`inputGroupSelect02`).value;
+        const mensajeError = document.getElementById('mensaje-datosCorrectos');
+        const todosCamposTrue = Object.values(campos).every(valor => valor === true);
+        if (todosCamposTrue) {
+            if (provincia !== "Elegir...") {
+                const formData = new FormData(document.getElementById('formulario'));
+                // Realizar una solicitud AJAX para enviar los datos al servidor
+                fetch('/login/registrarUsuario', {
+                    method: 'POST',
+                    body: formData
+                });
+            } else {
+                mensajeError.textContent = "Elegir la Provincia";
+            }
 
+        } else {
+            mensajeError.textContent = "Completar todos los datos";
+        }
+
+    });
+
+</script>

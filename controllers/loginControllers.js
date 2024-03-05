@@ -40,7 +40,6 @@ module.exports = {
 
   RegistrarUsuario: function (req, res) {
     login.buscarUsuario(conexion, req.body, function (err, datos) {
-      console.log(datos);
       if (datos.length === 0) {
         console.log(true);
         login.insertarUsuario(conexion, req.body, function (err) {
@@ -71,9 +70,4 @@ function registrarCliente(cliente) {
 
 
   });
-}
-
-function validadDatos(datos){
-
-
 }

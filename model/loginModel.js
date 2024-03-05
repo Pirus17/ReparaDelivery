@@ -15,8 +15,8 @@ module.exports = {
     },
 
     insertarCliente: function (conexion, cliente, IdUsuario, funcion) {
-        conexion.query("INSERT INTO cliente (apellido, nombre, direccion, numero, barrio, provincia, codigo, numerotelefono, IdUsuario) VALUES (?,?,?,?,?,?,?,?,?)" , 
-        [cliente.apellido, cliente.nombre, cliente.direccion, cliente.numero, cliente.barrio, cliente.provincia, cliente.codigo, cliente.numeroTelefono, IdUsuario], funcion);
+        conexion.query("INSERT INTO cliente (apellido, nombre, direccion, numero, barrio, provincia, numerotelefono, IdUsuario) VALUES (?,?,?,?,?,?,?,?)" , 
+        [cliente.apellido, cliente.nombre, cliente.direccion, cliente.numero, cliente.barrio, cliente.provincia, cliente.numeroTelefono, IdUsuario], funcion);
     },
 
     insertarActividad: function (conexion, actividad, IdUsuario, funcion) {

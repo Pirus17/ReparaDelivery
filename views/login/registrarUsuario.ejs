@@ -26,7 +26,7 @@
                             <div class="input-group mb-3" id="grupo__contrasenia">
                                 <span class="input-group-text">Contraseña</span>
                                 <input name="contrasenia" type="text" class="form-control"
-                                    placeholder="* Correo Electronico" aria-label="Username">
+                                    placeholder="* Contraseña" aria-label="Username">
 
                             </div>
                             <div id="mensaje-contrasenia" style="color: red;"></div>
@@ -37,60 +37,63 @@
                                     aria-label="Username">
 
                             </div>
+                            <div id="mensaje-nombre" style="color: red;"></div>
 
                             <div class="input-group mb-3" id="grupo__apellido">
                                 <span class="input-group-text">Apellido</span>
                                 <input name="apellido" type="text" class="form-control" placeholder="* Apellido"
                                     aria-label="Username">
                             </div>
+                            <div id="mensaje-apellido" style="color: red;"></div>
 
                             <div class="input-group mb-3" id="grupo__direccion">
                                 <span class="input-group-text">Dirección</span>
                                 <input name="direccion" type="text" class="form-control"
-                                    placeholder="* calle o manza y lote" aria-label="Username">
+                                    placeholder="* calle o mza y lote" aria-label="Username">
 
                             </div>
+                            <div id="mensaje-direccion" style="color: red;"></div>
 
                             <div class="input-group mb-3" id="grupo__numero">
                                 <span class="input-group-text">Numero</span>
                                 <input name="numero" type="text" class="form-control" placeholder="Nº"
                                     aria-label="Username">
+                            </div>
+                            <div id="mensaje-numero" style="color: red;"></div>
+                            
+
+                            <div class="input-group mb-3" id="grupo__barrio">
                                 <span class="input-group-text">Barrio</span>
                                 <input name="barrio" type="text" class="form-control" placeholder="Barrio"
                                     aria-label="Username">
                             </div>
-                            <div id="mensaje-error" style="color: red;"></div>
+                            <div id="mensaje-barrio" style="color: red;"></div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3" id="grupo__provincia">
                                 <label class="input-group-text" for="inputGroupSelect02">Provincia</label>
                                 <select name="provincia" class="form-select" id="inputGroupSelect02">
                                     <option selected>Elegir...</option>
                                     <option value="Santiago del Estero">Santiago del estero</option>
                                 </select>
                             </div>
-
-                            <div class="input-group">
-                                <span class="input-group-text">Teléfono</span>
-
-                            </div>
+                            <div id="mensaje-provincia" style="color: red;"></div>
                             
+                            <div class="input-group" id="grupo__numeroTelefono">
+                                <span class="input-group-text">Número Teléfono</span>
+                            </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Cod Area</span>
-                                <input name="codigo" type="text" class="form-control" placeholder="* Ej: 385"
-                                    aria-label="Username">
-                                <span class="input-group-text">Numero</span>
-                                <input name="numeroTelefono" type="text" class="form-control" placeholder="* sin 15"
+                                <input name="numeroTelefono" type="text" class="form-control" placeholder="*Código de área sin 0 y número sin 15"
                                     aria-label="Username">
                             </div>
-
+                            <div id="mensaje-numeroTelefono" style="color: red;"></div>
+                            <div class="mx" id="mensaje-datosCorrectos" style="color: red;"></div>
 
                 </div>
 
 
                 <div class="d-grid gap-2 col-5 mx-auto">
-                    <button type="submit" class="btn btn-primary" disabled>Registrarse</button>
+                    <button type="submit" class="btn btn-primary" id="btnRegistrarse">Registrarse</button>
                     <br>
-
                 </div>
                 <br>
 
@@ -98,5 +101,5 @@
 
         </div>
     </div>
-    <%-include ('../login/layouts/validacion') %>
+   <!-- <%-include ('../login/layouts/validacion') %>-->
     <%-include ('../login/layouts/footer') %>
