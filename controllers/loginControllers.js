@@ -49,9 +49,9 @@ module.exports = {
     
         });
 
-
       } else {
-
+        alert = true;
+        res.render('login/registrarUsuario', { login: 'Login', alert });
       }
 
     });
