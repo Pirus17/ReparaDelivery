@@ -64,15 +64,40 @@
 
       </div>
       <!--icono usuario-->
-      <a class="nav-link icono-usuario ms-auto text-light" href="/login"><i class="bi bi-person"></i></a>
-
+      <a href="/login">
+        <button class="btn btn-primary btn-usuario"><i class="bi bi-person"></i></button>
+      </a>
 
       <!--icono carrito-->
-      <a class="nav-link icono-usuario ms-3 text-light" href="#"><i class="bi bi-cart3"></i></a>
+      <button class="btn btn-primary btn-carrito" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart3"></i></a></button>
+
+
+    </div>
 
     </div>
 
   </nav>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header bg-primary">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="total">
+        <H4>$30000</H4>
+      </div>
+      <div class="container-fluid border border-secondary rounded">
+        <div class="d-flex justify-content-center align-items-center carrito-vacio">
+          <i class="bi bi-cart-x text-center"></i>
+        </div>
+        <H5 class="text-center">Tu carrito esta vacío</H5>
+        <H6 class="text-center"> Comenzá a comprar y aprovechá nuestros productos</H6>
+        
+      </div>
+    </div>
+  </div>
+
   <BR></BR>
   <!--Barra Busqueda-->
   <div class="container-fluid contenedorBusqueda">

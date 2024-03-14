@@ -16,17 +16,29 @@ body {
   font-size: large;
 }
 
-.icono-usuario{
+.btn-usuario{
   font-size: x-large;
   fill: white;
  
 }
 
-.icono-usuario{
+.btn-carrito{
   font-size: x-large;
-  
+  fill: white;
  
 }
+.offcanvas-title{
+  color: white;
+  font-size: large;
+}
+
+.carrito-vacio{
+  font-size: xx-large;
+  fill: white; 
+}
+
+
+
 
 .contenedorBusqueda {
   background-color: white;
