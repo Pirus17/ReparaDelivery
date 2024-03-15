@@ -30,12 +30,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({ secret: 'secreto', resave: true, saveUninitialized: true }));
+app.use(session({
+  secret: 'secreto',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(session({
+  key: 'session_cookie_administrador',
+  secret: 'session_cookie_secret',
+  store: sessionStore,
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -54,17 +66,17 @@ app.use('/login', loginRouter);
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 // Ruta de retorno de Google después de la autenticación
-app.get('/auth/google/callback', 
+app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
+  function (req, res) {
     // Autenticación exitosa, redirigir a la página de perfil del usuario
     res.redirect('/profile');
   });
 
-  // Ruta de perfil del usuario
-app.get('/profile', function(req, res) {
+// Ruta de perfil del usuario
+app.get('/profile', function (req, res) {
   // Verificar si el usuario está autenticado
-  if(req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
     res.send('Bienvenido ' + req.user.displayName);
   } else {
     res.redirect('/login');
@@ -72,7 +84,7 @@ app.get('/profile', function(req, res) {
 });
 
 // Ruta de cierre de sesión
-app.get('/logout', function(req, res){
+app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
@@ -85,28 +97,28 @@ passport.use(new GoogleStrategy({
   callbackURL: 'http://localhost:3000/auth/google/callback'
 },
 
-function(accessToken, refreshToken, profile, done) {
-  // Aquí puedes guardar o buscar el usuario en tu base de datos
-  return done(null, profile);
-}
+  function (accessToken, refreshToken, profile, done) {
+    // Aquí puedes guardar o buscar el usuario en tu base de datos
+    return done(null, profile);
+  }
 ));
 
 // Serializar y deserializar el usuario
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -117,3 +129,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+  
